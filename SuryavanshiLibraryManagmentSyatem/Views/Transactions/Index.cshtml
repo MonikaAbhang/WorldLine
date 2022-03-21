@@ -1,0 +1,66 @@
+﻿@model IEnumerable<SuryavanshiLibraryManagmentSyatem.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h2>Transactions</h2>
+<p>
+    <a asp-controller="Transactions" asp-action="Create" class="btn btn-outline-secondary" >Issue Book</a>
+
+</p>
+<p>
+    <a asp-controller="Transactions" asp-action="ReturnBook" class="btn btn-outline-secondary">Return Book </a>
+</p>
+<p>
+    <a asp-controller="Transactions" asp-action="LateBook" class="btn btn-outline-secondary">Check Fine </a>
+</p>
+
+<table class="table" border="2">
+    <thead class="tablehead">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfIssue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfReturn)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="tablebody">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfIssue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfReturn)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

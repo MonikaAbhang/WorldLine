@@ -1,0 +1,52 @@
+﻿@model SuryavanshiLibraryManagmentSyatem.Models.Transaction
+
+@{
+    ViewData["Title"] = "Return Book";
+}
+<body class="table-info">
+    <h1>Return Book</h1>
+
+    <h4>Transaction</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="ReturnBook">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @*<div class="form-group">
+                    <label asp-for="Id" class="control-label"></label>
+                    <input asp-for="Id" class="form-control" />
+                    <span asp-validation-for="Id" class="text-danger"></span>
+                    </div>*@
+                <div class="form-group">
+                    <label asp-for="BookId" class="control-label"></label>
+                    <select asp-for="BookId" class="form-control" asp-items="ViewBag.BookId">
+                        <option disabled>-----SELECT-----</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CustomerId" class="control-label"></label>
+                    <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.CustomerId">
+                        <option disabled>-----SELECT-----</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DateOfReturn" class="control-label"></label>
+                    <input asp-for="DateOfReturn" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Return Book" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <br></br>
+    <div>
+        <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+    </div>
+
+    @section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+</body>

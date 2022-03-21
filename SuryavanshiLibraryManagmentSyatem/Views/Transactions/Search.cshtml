@@ -1,0 +1,85 @@
+﻿@model IEnumerable<SuryavanshiLibraryManagmentSyatem.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Transactions</h2>
+
+@using (Html.BeginForm("Search", "Transactions", FormMethod.Get))
+{
+    <b>Search By: </b>
+    @Html.RadioButton("SearchTransaction","Id",true)
+    <text>Id </text>
+    @Html.RadioButton("SearchTransaction","BookId")
+
+    <text>BookId</text>
+    @Html.RadioButton("SearchTransaction","CustomerId")
+
+    <text>CustomerId </text>
+    <br />
+    <br></br>
+    @Html.TextBox("search")
+    <button type="submit"><b>Search</b></button>
+}
+<br></br>
+
+<table class="table" border="2">
+    <thead class="tablehead">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfIssue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfReturn)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody class="table-active">
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="7" align="center">
+                    <b> &#128512;........No    Rows    Match   With   Search   Criteria........ &#128512;</b>
+                </td>
+            </tr>
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfIssue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfReturn)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit </a> |
+                    <a asp-action="Details" asp-route-id="@item.Id"> Details </a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id"> Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br></br>
+<a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>

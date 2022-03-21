@@ -1,0 +1,60 @@
+﻿@model IEnumerable<SuryavanshiLibraryManagmentSyatem.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h2 align="center">Issue Books</h2>
+
+<table class="table " border="2">
+    <thead class="tablehead">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ISBN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublisherId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="table-active">
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="4" align="center">
+                    <b> &#128512;........No   Books are Avaiable in Library........ &#128512;</b>
+                </td>
+            </tr>
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ISBN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PublisherId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuthorId)
+                </td>
+                <td>
+                    @* <a asp-action="Edit" asp-route-id="@item.ISBN">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ISBN">Details</a> |*@
+                    <a asp-action="Delete" asp-route-id="@item.ISBN">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br></br>
+<a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>

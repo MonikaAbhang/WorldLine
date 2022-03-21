@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SuryavanshiLibraryManagmentSyatem.Models.LateBook>
+@{
+    ViewData["Title"] = "Late  Pop";
+}
+<body style="background-image:url('~/images/Leaf.jpg');" >
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Late Book</h2>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<table class="table" border="2">
+    <thead class="tablehead">
+        <tr>
+            <th> @Html.DisplayNameFor(model => model.CustomerName)</th>
+            <th> @Html.DisplayNameFor(model => model.BookTitle)</th>
+            <th> @Html.DisplayNameFor(model => model.ISBN)</th>
+            <th> @Html.DisplayNameFor(model => model.AuthorName)</th>
+            <th> @Html.DisplayNameFor(model => model.LateFees)</th>
+        </tr>
+    </thead>
+    <tbody class="tablebody">
+        @if (Model != null)
+        {
+            @foreach (var transaction in Model)
+            {
+                <tr>
+                    <td>@transaction.CustomerName</td>
+                    <td>@transaction.BookTitle</td>
+                    <td>@transaction.ISBN</td>
+                    <td>@transaction.AuthorName</td>
+                    <td>@transaction.LateFees</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<br></br>
+ <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+ </body>
+
+

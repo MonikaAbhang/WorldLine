@@ -1,0 +1,73 @@
+﻿@model IEnumerable<SuryavanshiLibraryManagmentSyatem.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h2>Books</h2>
+<p>
+    <a asp-action="Create" class="btn btn-outline-secondary">Create New</a>
+<p>
+    <a asp-controller="Books" asp-action="Search" class="btn btn-outline-secondary">Search Book</a>
+</p>
+<p>
+    <a asp-controller="Books" asp-action="AvailableBook" class="btn btn-outline-secondary">Available Book</a>
+</p>
+<p>
+    <a asp-controller="Books" asp-action="IssueBook" class="btn btn-outline-secondary">Issue Book list</a>
+</p>
+
+<table class="table " border="2">
+    <thead class="tablehead">
+        <tr>
+            <th>
+                    @Html.DisplayNameFor(model => model.ISBN)
+            </th>
+            <th>
+                    @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                    @Html.DisplayNameFor(model => model.PublisherId)
+            </th>
+            <th>
+                    @Html.DisplayNameFor(model => model.AuthorId)
+            </th>
+            <th>
+                    @Html.DisplayNameFor(model => model.IssuedStatus)
+            </th>
+            <th>
+                    @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="tablebody">
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                        @Html.DisplayFor(modelItem => item.ISBN)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.PublisherId)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.AuthorId)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item. IssuedStatus)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.IsDeleted)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ISBN">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ISBN">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ISBN">Delete</a>
+                </td>
+            </tr>
+            }
+    </tbody>
+</table>
